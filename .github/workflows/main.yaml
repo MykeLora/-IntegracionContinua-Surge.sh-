@@ -16,13 +16,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Install Surge
         run: npm install --global surge
 
       - name: Deploy to Surge
         env:
-          SURGE_LOGIN: ${{ secrets._SURGE_LOGIN }}
-          SURGE_TOKEN: ${{ secrets._SURGE_TOKEN }}
+          SURGE_LOGIN: ${{ secrets.GITHUB_TOKEN }}
+          SURGE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: surge --project ./ --domain mi-pagina-web.surge.sh
